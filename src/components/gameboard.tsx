@@ -10,9 +10,9 @@ const Card: React.FC<CardProps> = ({ image }) => {
   const [flipped, setFlipped] = useState(false);
 
   const flipMap: { [key: string]: string } = {
-    "card2.png": "assets/cards/marawgha/card7.png",
-    "card4.png": "assets/cards/marawgha/card5.png",
-    "card8.png": "assets/cards/marawgha/card3.png",
+    "card2.png": "/assets/cards/marawgha/card7.png",
+    "card4.png": "/assets/cards/marawgha/card5.png",
+    "card8.png": "/assets/cards/marawgha/card3.png",
   };
 
   const fileName = image.split("/").pop() || "";
@@ -84,7 +84,6 @@ const Card: React.FC<CardProps> = ({ image }) => {
     </div>
   );
 };
-
 interface GameboardProps {
   players: string[];
   section: string;
@@ -127,7 +126,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
       alert("⚠️ لقد سحبت كرت المراوغة مسبقًا!");
       return;
     }
-    const marawghaCard = "assets/cards/marawgha/first.png";
+    const marawghaCard = "/assets/cards/marawgha/first.png";
     setDisplayedCard(marawghaCard);
     setPlayerMarawghaUsed({ ...playerMarawghaUsed, [currentPlayer]: true });
   };
@@ -325,7 +324,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
             }}
           >
             <img
-              src="assets/cards/marawgha/explain.png"
+              src="/assets/cards/marawgha/explain.png"
               alt="شرح المراوغة"
               style={{
                 width: "100%",
@@ -388,7 +387,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
               {["card2.png", "card4.png", "card8.png"].map((card, index) => (
                 <img
                   key={index}
-                  src={`assets/cards/marawgha/${card}`}
+                  src={`/assets/cards/marawgha/${card}`}
                   alt={`اختيار ${card}`}
                   style={{
                     width: "160px",
@@ -399,7 +398,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
                     transition: "transform 0.2s",
                   }}
                   onClick={() => {
-                    setDisplayedCard(`assets/cards/marawgha/${card}`);
+                    setDisplayedCard(`/assets/cards/marawgha/${card}`);
                     setShowChoosePopup(false);
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
