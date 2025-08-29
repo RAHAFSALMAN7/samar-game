@@ -1,15 +1,16 @@
- // src/components/InstructionCards.tsx
+// src/components/InstructionCards.tsx
 import React, { useState } from "react";
 
 interface InstructionCardsProps {
   onBack: () => void; // دالة للعودة لشاشة السكشن
 }
 
+// مسارات الصور بعد التعديل لتكون من مجلد public
 const instructionImages = [
-  "/src/assets/cards/instruction/card1.png",
-  "/src/assets/cards/instruction/card2.png",
-  "/src/assets/cards/instruction/card3.png",
-  "/src/assets/cards/instruction/card4.png",
+  "/assets/cards/instruction/card1.png",
+  "/assets/cards/instruction/card2.png",
+  "/assets/cards/instruction/card3.png",
+  "/assets/cards/instruction/card4.png",
 ];
 
 const InstructionCards: React.FC<InstructionCardsProps> = ({ onBack }) => {

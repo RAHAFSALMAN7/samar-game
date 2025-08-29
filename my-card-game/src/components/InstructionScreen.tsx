@@ -1,4 +1,4 @@
- // src/components/InstructionScreen.tsx
+// src/components/InstructionScreen.tsx
 import React, { useState } from "react";
 import { cardsData } from "../data/cards";
 
@@ -8,7 +8,9 @@ interface InstructionScreenProps {
 
 const InstructionScreen: React.FC<InstructionScreenProps> = ({ onBack }) => {
   const [popupImg, setPopupImg] = useState<string | null>(null);
-const cards = cardsData.instruction; // صحيح: "instruction" وليس "instructions"
+
+  // ✅ استخدام المسارات الجديدة داخل public/assets
+  const cards = cardsData.instruction;
 
   return (
     <div
@@ -22,6 +24,7 @@ const cards = cardsData.instruction; // صحيح: "instruction" وليس "instru
         alignItems: "center",
       }}
     >
+      {/* زر العودة */}
       <button
         onClick={onBack}
         style={{
@@ -43,6 +46,7 @@ const cards = cardsData.instruction; // صحيح: "instruction" وليس "instru
         📖 كروت التعليمات
       </h1>
 
+      {/* عرض الصور */}
       <div
         style={{
           display: "flex",
@@ -54,7 +58,7 @@ const cards = cardsData.instruction; // صحيح: "instruction" وليس "instru
         {cards.map((card, index) => (
           <img
             key={index}
-            src={card}
+            src={card} // ✅ المسار الجديد من public/assets
             alt={`instruction-card-${index}`}
             style={{
               width: "200px",
@@ -70,6 +74,7 @@ const cards = cardsData.instruction; // صحيح: "instruction" وليس "instru
         ))}
       </div>
 
+      {/* بوب أب عند النقر على الصورة */}
       {popupImg && (
         <div
           onClick={() => setPopupImg(null)}

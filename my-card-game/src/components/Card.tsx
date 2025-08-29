@@ -8,7 +8,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
   return (
     <div style={{ margin: "20px 0" }}>
       <img
-        src={image}
+        src={image.startsWith("/src/") ? image.replace("/src", "") : image}
         alt="card"
         style={{
           width: "250px",
@@ -20,4 +20,4 @@ const Card: React.FC<CardProps> = ({ image }) => {
   );
 };
 
-export default Card; // ✅ default export
+export default Card;

@@ -2,12 +2,12 @@ import React from "react";
 
 // ✅ تعريف أقسام الكروت (كل قسم عبارة عن id + اسم + صورة)
 const sections = [
-  { id: "mn_al_akher", name: "  ", image: "/src/assets/mn_al_akher.png" },
-  { id: "khayalak", name: "", image: "/src/assets/khayalak.png" },
-  { id: "min_qalbik", name: "", image: "/src/assets/min_qalbik.png" },
-  { id: "mood", name: "", image: "/src/assets/mood.png" },
-  { id: "waraqak", name: " ", image: "/src/assets/waraqak.png" },
-  { id: "instruction", name: " ", image: "/src/assets/instruction.png" },
+  { id: "mn_al_akher", name: "  ", image: "/assets/mn_al_akher.png" },
+  { id: "khayalak", name: "", image: "/assets/khayalak.png" },
+  { id: "min_qalbik", name: "", image: "/assets/min_qalbik.png" },
+  { id: "mood", name: "", image: "/assets/mood.png" },
+  { id: "waraqak", name: " ", image: "/assets/waraqak.png" },
+  { id: "instruction", name: " ", image: "/assets/instruction.png" },
 ];
 
 // ✅ شاشة اختيار الأقسام

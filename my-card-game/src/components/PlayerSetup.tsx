@@ -24,7 +24,7 @@ const PlayerSetup: React.FC<PlayerSetupProps> = ({ onStart }) => {
   const startGame = () => {
     const filledPlayers = players.filter((p) => p.trim() !== "");
     if (filledPlayers.length < numPlayers) {
-      setShowPopup(true); // بدل alert → بوب أب
+      setShowPopup(true); // بوب أب بدل alert
       return;
     }
     onStart(players);

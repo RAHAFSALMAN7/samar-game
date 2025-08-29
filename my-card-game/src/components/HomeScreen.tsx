@@ -17,13 +17,14 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onStart }) => {
         backgroundColor: "#080844",
         color: "#EBEBDF",
         textAlign: "center",
-        padding: 0, // ✅ تم تعديل الـ padding
+        padding: 0,
         boxSizing: "border-box",
         direction: "ltr",
       }}
     >
+      {/* ✅ تعديل مسار الصورة */}
       <img
-        src="/CARDS_01.jpg"
+        src="/assets/CARDS_01.jpg"
         alt="سمر كرت"
         style={{
           width: "260px",

@@ -10,9 +10,9 @@ const Card: React.FC<CardProps> = ({ image }) => {
   const [flipped, setFlipped] = useState(false);
 
   const flipMap: { [key: string]: string } = {
-    "card2.png": "/src/assets/cards/marawgha/card7.png",
-    "card4.png": "/src/assets/cards/marawgha/card5.png",
-    "card8.png": "/src/assets/cards/marawgha/card3.png",
+    "card2.png": "/assets/cards/marawgha/card7.png",
+    "card4.png": "/assets/cards/marawgha/card5.png",
+    "card8.png": "/assets/cards/marawgha/card3.png",
   };
 
   const fileName = image.split("/").pop() || "";
@@ -98,7 +98,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
   const [playerMarawghaUsed, setPlayerMarawghaUsed] = useState<{ [key: string]: boolean }>({});
   const [showExplainPopup, setShowExplainPopup] = useState(false);
   const [showChoosePopup, setShowChoosePopup] = useState(false);
-  const [showEndPopup, setShowEndPopup] = useState(false); // جديد
+  const [showEndPopup, setShowEndPopup] = useState(false);
 
   const currentPlayer = players[currentPlayerIndex];
   const nextPlayer = players[(currentPlayerIndex + 1) % players.length];
@@ -111,7 +111,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
 
   const drawCard = () => {
     if (remainingCards.length === 0) {
-      setShowEndPopup(true); // بدل alert
+      setShowEndPopup(true);
       return;
     }
     const randomIndex = Math.floor(Math.random() * remainingCards.length);
@@ -127,7 +127,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
       alert("⚠️ لقد سحبت كرت المراوغة مسبقًا!");
       return;
     }
-    const marawghaCard = "/src/assets/cards/marawgha/first.png";
+    const marawghaCard = "/assets/cards/marawgha/first.png";
     setDisplayedCard(marawghaCard);
     setPlayerMarawghaUsed({ ...playerMarawghaUsed, [currentPlayer]: true });
   };
@@ -172,7 +172,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
         🔙 رجوع للسكشنز
       </button>
 
-      {/* اللاعب الحالي و التالي */}
+      {/* اللاعب الحالي واللاعب التالي */}
       <div
         style={{
           display: "flex",
@@ -223,7 +223,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
         <div style={{ textAlign: "center" }}>
           <Card image={displayedCard} />
 
-          {/* الأزرار الخاصة بكرت المراوغة */}
+          {/* أزرار كرت المراوغة */}
           {displayedCard.includes("marawgha") && (
             <div style={{ marginTop: "15px", display: "flex", gap: "10px", justifyContent: "center" }}>
               <button
@@ -325,7 +325,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
             }}
           >
             <img
-              src="/src/assets/cards/marawgha/explain.png"
+              src="/assets/cards/marawgha/explain.png"
               alt="شرح المراوغة"
               style={{
                 width: "100%",
@@ -351,7 +351,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
         </div>
       )}
 
-      {/* بوب أب الاختيار الجديد */}
+      {/* بوب أب الاختيار */}
       {showChoosePopup && (
         <div
           style={{
@@ -388,7 +388,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
               {["card2.png", "card4.png", "card8.png"].map((card, index) => (
                 <img
                   key={index}
-                  src={`/src/assets/cards/marawgha/${card}`}
+                  src={`/assets/cards/marawgha/${card}`}
                   alt={`اختيار ${card}`}
                   style={{
                     width: "160px",
@@ -399,7 +399,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
                     transition: "transform 0.2s",
                   }}
                   onClick={() => {
-                    setDisplayedCard(`/src/assets/cards/marawgha/${card}`);
+                    setDisplayedCard(`/assets/cards/marawgha/${card}`);
                     setShowChoosePopup(false);
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
@@ -452,7 +452,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
             }}
           >
             <h2 style={{ fontSize: "1.6rem", marginBottom: "15px", color: "#4f0000" }}>
-                انتهت جميع الكروت
+              انتهت جميع الكروت
             </h2>
             <p style={{ fontSize: "1rem", marginBottom: "20px", color: "#333" }}>
               لقد لعبتم كل الأوراق المتاحة   
