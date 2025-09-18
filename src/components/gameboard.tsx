@@ -84,6 +84,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
     </div>
   );
 };
+
 interface GameboardProps {
   players: string[];
   section: string;
@@ -106,8 +107,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
     if (remainingCards.length > 0 && !displayedCard) {
       drawCard();
     }
-  }, [])
-    ;
+  }, []);
 
   const drawCard = () => {
     if (remainingCards.length === 0) {
