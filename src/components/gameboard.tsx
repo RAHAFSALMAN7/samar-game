@@ -465,7 +465,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
                 fontSize: "1rem",
               }}
             >
-              🔙 رجوع
+              🔙🔙 رجوع
             </button>
           </div>
         </div>
