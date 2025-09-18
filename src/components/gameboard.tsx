@@ -9,7 +9,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ image }) => {
   const [flipped, setFlipped] = useState(false);
 
-  // flipMap خاص بالكروت التي لها وجه خلفي مختلف
+  // flipMap للكروت التي لها وجه خلفي مختلف
   const flipMap: { [key: string]: string } = {
     "card2.png": "/assets/cards/marawgha/card7.png",
     "card4.png": "/assets/cards/marawgha/card5.png",
@@ -27,9 +27,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
         height: "420px",
         marginTop: "30px",
       }}
-      onClick={() => {
-        if (hasFlip) setFlipped(!flipped);
-      }}
+      onClick={() => hasFlip && setFlipped(!flipped)}
     >
       <div
         style={{
@@ -53,11 +51,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
             boxShadow: "0 12px 25px rgba(255, 255, 255, 0.5)",
           }}
         >
-          <img
-            src={image}
-            alt="Card"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+          <img src={image} alt="Card" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
 
         {/* الوجه الخلفي */}
@@ -73,7 +67,6 @@ const Card: React.FC<CardProps> = ({ image }) => {
             boxShadow: "0 12px 25px rgba(255, 255, 255, 0.5)",
           }}
         >
-          {/* كل الكروت الخلفية تظهر بنفس طريقة كرت المراوغة */}
           <img
             src={hasFlip ? flipMap[fileName] : "/assets/cards/marawgha/first.png"}
             alt="Back"
@@ -93,7 +86,7 @@ interface GameboardProps {
 
 const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
-  const [remainingCards, setRemainingCards] = useState(cardsData[section] || []);
+  const [remainingCards, setRemainingCards] = useState<string[]>(cardsData[section] || []);
   const [displayedCard, setDisplayedCard] = useState<string | null>(null);
   const [playerMarawghaUsed, setPlayerMarawghaUsed] = useState<{ [key: string]: boolean }>({});
   const [showExplainPopup, setShowExplainPopup] = useState(false);
@@ -127,8 +120,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
       alert("لقد سحبت كرت المراوغة مسبقًا!");
       return;
     }
-    const marawghaCard = "/assets/cards/marawgha/first.png";
-    setDisplayedCard(marawghaCard);
+    setDisplayedCard("/assets/cards/marawgha/first.png");
     setPlayerMarawghaUsed({ ...playerMarawghaUsed, [currentPlayer]: true });
   };
 
