@@ -8,7 +8,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
   return (
     <div style={{ margin: "20px 0" }}>
       <img
-        src={image.startsWith("/src/") ? image.replace("/src", "") : image}
+        src={image} // مباشرة من cardsData.ts
         alt="card"
         style={{
           width: "250px",
