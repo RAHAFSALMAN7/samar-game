@@ -9,6 +9,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ image }) => {
   const [flipped, setFlipped] = useState(false);
 
+  // flipMap خاص بالكروت التي لها وجه خلفي مختلف
   const flipMap: { [key: string]: string } = {
     "card2.png": "/assets/cards/marawgha/card7.png",
     "card4.png": "/assets/cards/marawgha/card5.png",
@@ -60,26 +61,25 @@ const Card: React.FC<CardProps> = ({ image }) => {
         </div>
 
         {/* الوجه الخلفي */}
-        {hasFlip && (
-          <div
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              backfaceVisibility: "hidden",
-              transform: "rotateY(180deg)",
-              borderRadius: "16px",
-              overflow: "hidden",
-              boxShadow: "0 12px 25px rgba(255, 255, 255, 0.5)",
-            }}
-          >
-            <img
-              src={flipMap[fileName]}
-              alt="Back"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          </div>
-        )}
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 12px 25px rgba(255, 255, 255, 0.5)",
+          }}
+        >
+          {/* كل الكروت الخلفية تظهر بنفس طريقة كرت المراوغة */}
+          <img
+            src={hasFlip ? flipMap[fileName] : "/assets/cards/marawgha/first.png"}
+            alt="Back"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </div>
       </div>
     </div>
   );
@@ -299,7 +299,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
         التالي ▶️
       </button>
 
-      {/* البوب أب الشرح */}
+      {/* بوب أب الشرح */}
       {showExplainPopup && (
         <div
           style={{
