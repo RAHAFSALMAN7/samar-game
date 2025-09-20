@@ -11,9 +11,9 @@ const Card: React.FC<CardProps> = ({ image }) => {
 
   // flipMap للكروت التي لها وجه خلفي مختلف
   const flipMap: { [key: string]: string } = {
-    "card2.png": "/assets/cards/marawgha/card7.png",
-    "card4.png": "/assets/cards/marawgha/card5.png",
-    "card8.png": "/assets/cards/marawgha/card3.png",
+    "card2.png": import.meta.env.BASE_URL + "assets/cards/marawgha/card7.png",
+    "card4.png": import.meta.env.BASE_URL + "assets/cards/marawgha/card5.png",
+    "card8.png": import.meta.env.BASE_URL + "assets/cards/marawgha/card3.png",
   };
 
   const fileName = image.split("/").pop() || "";
@@ -68,7 +68,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
           }}
         >
           <img
-            src={hasFlip ? flipMap[fileName] : "/assets/cards/marawgha/first.png"}
+            src={hasFlip ? flipMap[fileName] : import.meta.env.BASE_URL + "assets/cards/marawgha/first.png"}
             alt="Back"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
@@ -120,7 +120,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
       alert("لقد سحبت كرت المراوغة مسبقًا!");
       return;
     }
-    setDisplayedCard("/assets/cards/marawgha/first.png");
+    setDisplayedCard(import.meta.env.BASE_URL + "assets/cards/marawgha/first.png");
     setPlayerMarawghaUsed({ ...playerMarawghaUsed, [currentPlayer]: true });
   };
 
@@ -130,6 +130,8 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
     setShowChoosePopup(false);
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
   };
+
+  const base = import.meta.env.BASE_URL;
 
   return (
     <div
@@ -316,7 +318,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
             }}
           >
             <img
-              src="/assets/cards/marawgha/explain.png"
+              src={base + "assets/cards/marawgha/explain.png"}
               alt="شرح المراوغة"
               style={{
                 width: "100%",
@@ -379,7 +381,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
               {["card2.png", "card4.png", "card8.png"].map((card, index) => (
                 <img
                   key={index}
-                  src={`/assets/cards/marawgha/${card}`}
+                  src={base + `assets/cards/marawgha/${card}`}
                   alt={`اختيار ${card}`}
                   style={{
                     width: "160px",
@@ -390,7 +392,7 @@ const Gameboard: React.FC<GameboardProps> = ({ players, section, onBack }) => {
                     transition: "transform 0.2s",
                   }}
                   onClick={() => {
-                    setDisplayedCard(`/assets/cards/marawgha/${card}`);
+                    setDisplayedCard(base + `assets/cards/marawgha/${card}`);
                     setShowChoosePopup(false);
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
